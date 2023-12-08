@@ -73,7 +73,7 @@ const LoginForm = () => {
     <>
     <div className="container mx-auto my-8">
       <div className="w-full max-w-xs mx-auto">
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" action="http://localhost:5000/login" onSubmit={submitForm} >
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" action="https://nodejs-api-login.onrender.com/login" onSubmit={submitForm} >
           <div id="errorBox" className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-3 rounded relative" role="alert">
             <span className="block sm:inline">Invalid Login</span>
           </div>
