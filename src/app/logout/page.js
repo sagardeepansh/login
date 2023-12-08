@@ -1,17 +1,32 @@
 "use client"
 import { useRouter } from 'next/navigation'
-
+import { useState, useEffect } from 'react';
 
 
 const Logout = () => {
   const router = useRouter();
-  localStorage.clear();
-  router.push("/")
-  return(
-    <>
-    <h1>dfsdf</h1>
-    </>
-  )
+  const [localdata, setLocaldata] = useState({    
+    localid: "",
+    localemailid: "",
+    localusername: "",
+    localtoken: "",
+    }
+  );
+  
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
+  
+
+  if(!localdata.localtoken){
+    return(
+      <>
+      <h1> ggg</h1>
+      </>
+    )
+  }
+  router.push("/");
+  
 }
 
 export default Logout;

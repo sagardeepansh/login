@@ -1,13 +1,34 @@
 "use client"
 import Header from "../components/layouts/header";
 import Footer from "../components/layouts/footer";
-// import Chandu from "../components/commonFun";
+import { useState, useEffect } from 'react';
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-const dashboard = () => {
-  // alert(localStorage.getItem('token'));
+const Dashboard = () => {
+  // alert(localStorage.getItem('toke
+  const [localdata, setLocaldata] = useState({    
+    localid: "",
+    localemailid: "",
+    localusername: "",
+    localtoken: "",
+    }
+  );
+  
+  useEffect(() => {
+    setLocaldata({
+      localid: localStorage.getItem('id'),
+      localemailid: localStorage.getItem('emailid'),
+      localusername: localStorage.getItem('name'),
+      localtoken: localStorage.getItem('token'),
+    });
+
+  }, []);
+
   const router = useRouter();
-  if(localStorage.getItem('token') != null){
+  // console.log(localdata);
+  var tokends = localdata.localtoken
+  if(tokends != null){
     const people = [
     {
       name: 'Calvin Hawkins',
@@ -29,10 +50,10 @@ const dashboard = () => {
     },
     ]
 
-    const id = localStorage.getItem('id');
-    const emailid = localStorage.getItem('emailid');
-    const username = localStorage.getItem('name');
-    const token = localStorage.getItem('token');
+    const id = localdata.localid;
+    const emailid = localdata.localemailid;
+    const username = localdata.localusername;
+    const token = localdata.localtoken;
 
     return(
         <>
@@ -54,7 +75,7 @@ const dashboard = () => {
                     <ul className="divide-y divide-gray-200">
                         {people.map((person) => (
                         <li key={person.email} className="py-4 flex">
-                            <img className="h-10 w-10 rounded-full" src={person.image} alt="" />
+                            <Image className="h-10 w-10 rounded-full" src={person.image} alt="" />
                             <div className="ml-3">
                             <p className="text-sm font-medium text-gray-900">{person.name}</p>
                             <p className="text-sm text-gray-500">{person.email}</p>
@@ -72,8 +93,17 @@ const dashboard = () => {
         </>
     )
   }
-  router.push("/")
-}
+  else{
+    // return(
+    //       <>
+    //       <h1> Not Exist</h1>
+    //       </>
+    //     )
+    // router.push("/");
+  }
   
+}
 
-export default dashboard;
+
+
+export default Dashboard;

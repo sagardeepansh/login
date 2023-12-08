@@ -56,7 +56,7 @@ const LoginForm = () => {
                     localStorage.setItem('name', respon.userDetails[0].fname);
                     localStorage.setItem('emailid', respon.userDetails[0].emailid);
                     localStorage.setItem('id', respon.userDetails[0].id);
-                    router.push("/dashbroad")
+                    router.push("/dashboard")
                 }else if(respon.msg=='invalid'){
                   showError('Please check your details');
                 } else{
